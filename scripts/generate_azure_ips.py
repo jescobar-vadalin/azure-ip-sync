@@ -1,12 +1,16 @@
 import re
 import requests
 
-DOWNLOAD_PAGE = "https://www.microsoft.com/en-us/download/details.aspx?id=56519"
+DOWNLOAD_PAGE = "https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519"
 OUTPUT_FILE = "azure-cloud-ips.txt"
 
 
 def get_json_download_url():
-    resp = requests.get(DOWNLOAD_PAGE, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+    resp = requests.get(
+        DOWNLOAD_PAGE,
+        timeout=30,
+        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
+    )
     match = re.search(
         r'https://download\.microsoft\.com/download/[^"]+ServiceTags_Public_[^"]+\.json',
         resp.text,
