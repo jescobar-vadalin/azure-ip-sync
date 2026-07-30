@@ -25,6 +25,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add azure-cloud-ips.txt
+          git add azure-cloud-ips-part*.txt azure-cloud-ips-manifest.txt
           git diff --staged --quiet || git commit -m "Auto-update: Azure Cloud IPs $(date -u +%Y-%m-%d)"
           git push
